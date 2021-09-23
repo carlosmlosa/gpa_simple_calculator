@@ -5,7 +5,7 @@ import re
 import math
 
 # Choose PDF file with your expedient
-file_path = "C:/Users/charl/cosas_CHARLIE/DESKTOP_LOCAL/gpa_simple_calculator/expedienteultimaSituación.pdf"
+file_path = "pdf file path"
 
 # Preparing the data
 df = tabula.read_pdf(file_path, pages='all')
