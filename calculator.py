@@ -5,7 +5,7 @@ import re
 import math
 
 # Choose PDF file with your expedient
-file_path = "M:/Universidad/GRADO/expediente.pdf"
+file_path = "C:/Users/charl/cosas_CHARLIE/DESKTOP_LOCAL/gpa_simple_calculator/expedienteultimaSituación.pdf"
 
 # Preparing the data
 df = tabula.read_pdf(file_path, pages='all')
@@ -33,8 +33,17 @@ for mark in grade_list:
         credit_list.pop(grade_list.index(mark))
         grade_list.remove(mark)
 
-grade_list = [x for x in grade_list if pd.isnull(x) == False and x != 'nan']
-credit_list = [x for x in credit_list if pd.isnull(x) == False and x != 'nan']
+# Tuples [grades, credits] to maintain consistency 
+grades_credit_list=[]
+for x in range(len(grade_list)):
+    if pd.isnull(grade_list[x])==False and grade_list[x] != 'nan' and type(grade_list[x])==float:
+        grades_credit_list.append([grade_list[x],credit_list[x]])
+
+grade_list=[]
+credit_list=[]
+
+grade_list=[item[0] for item in grades_credit_list]
+credit_list=[item[1] for item in grades_credit_list]
 
 
 # Convert scale 0-10 to 0-4
